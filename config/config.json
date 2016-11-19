@@ -1,0 +1,22 @@
+{
+  "development": {
+    "username": "root",
+    "password": "RC*1136Darman",
+    "database": "resume_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "RC*1136Darman",
+    "database": "resume_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "RC*1136Darman",
+    "database": "resume_db",
+    "dialect": "mysql"
+  }
+}
