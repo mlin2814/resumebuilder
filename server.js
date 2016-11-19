@@ -1,9 +1,16 @@
 // Dependencies
 // ============
 var express = require('express');
-var path = require('path');
+//var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var session = require('express-session');
+// Our model controllers (rather than routes)
+
+var application_controller = require('./controllers/application_controllers');
+var jobs_controller = require('./controllers/jobs_controllers');
+var users_controller = require('./controllers/users_controllers');
+//var organization_controller = require('./controllers/organization_controller');
 
 var app = express();
 
@@ -21,18 +28,17 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-// var routes = require('./controllers/sequelizedBurger_controller.js');
-// app.use('/', routes);
+console.log("appuse")
 
+app.use('/', application_controller);
+console.log("before jobs")
+app.use('/jobs', jobs_controller);
+app.use('/users', users_controller);
+//app.use('/organization', organization_controllers);
 
-// var SequelizedBurger=require("./models")["sequelizedBurger"];
-// SequelizedBurger.sync();//create a sequelizedBurger table
-
-
-
+console.log("here2")
 // we bring in the models we exported with index.js
 var models = require("./models");
-
 // we set the port of the app
 app.set('port', process.env.PORT || 3000);
 
