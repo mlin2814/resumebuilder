@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+
+
+	<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+
+<!-- Added link to the jQuery Library -->
+  <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+</head>
+	<body>
+
+
+<button id="loginbutton">Facebook Login</button>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC0d-_oKrPtLWlmDgYVbJ9E6CtfvBpFBB8",
+    authDomain: "practice-bfce9.firebaseapp.com",
+    databaseURL: "https://practice-bfce9.firebaseio.com",
+    storageBucket: "practice-bfce9.appspot.com",
+    messagingSenderId: "569351131354"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '174987352905168',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+
+
+function signin(){
+
+var provider = new firebase.auth.FacebookAuthProvider();
+
+firebase.auth().signInWithPopup(provider).then(function(result) {
+  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user;
+  // ...
+  // console.log(user);
+  console.log(user.displayName);
+  console.log(user.email);
+  console.log(user.photoURL);
+
+$('#main').append('User: ' + user.displayName + '<br>');
+$('#main').append('Email: ' + user.email + '<br>');
+$('#main').append('<img src="' + user.photoURL + '">');
+
+
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+	
+});
+}
+
+$('#loginbutton').on('click', function(){
+  signin();
+});
+
+
+</script>
+
+<div id="main"></div>
+
+
+
+	</body>
+</html>
