@@ -28,15 +28,15 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-console.log("appuse")
+console.log("Server.js is connected!")
 
 app.use('/', application_controller);
-console.log("before jobs")
+// console.log("before jobs")
 app.use('/jobs', jobs_controller);
 app.use('/users', users_controller);
 //app.use('/organization', organization_controllers);
 
-console.log("here2")
+// console.log("here2")
 // we bring in the models we exported with index.js
 var models = require("./models");
 // we set the port of the app
@@ -49,6 +49,6 @@ models.sequelize.sync().then(function () {
 	// set our app to listen to the port we set above
   var server = app.listen(app.get('port'), function() {
   	// then save a log of the listening to our debugger.
-    console.log('Express server listening on port ' + server.address().port);
+    console.log('Express Server Listening on port ' + server.address().port);
   });
 });

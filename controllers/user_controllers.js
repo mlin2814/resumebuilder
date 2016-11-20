@@ -1,3 +1,4 @@
+console.log("users_controllers.js file 1 is connected!")
 var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
