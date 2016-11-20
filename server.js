@@ -20,12 +20,14 @@ app.use(express.static(process.cwd() + '/public'));
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
+
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'));
 var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({
 	defaultLayout: 'main'
 }));
+
 app.set('view engine', 'handlebars');
 
 console.log("Server.js is connected!")
@@ -48,29 +50,55 @@ var models = require("./models");
 // models.sequelize.sync().then(function () {
 
 
-// SOLUTION: Sync our models
+// Sync our models
 models.sequelize.sync({force:true}) 
 // {force:true} drops the table everytime the server starts.
 
-// Solution: Create our Users in a .then callback
+// MIKE ADDED (SET FOREIGN KEY CHECKS
+// var sequelizeConnection = models.sequelize;
+// sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
+
+// Create our Users in a .then callback
 // ================================================
+// MIKE ADDED 3 THEN FUNCTIONS...
 .then(function(){
 
 	return models.User.create({
-		facebookId: "111",
-   		firstName: "James",
-    	lastName: "Smith",
-    	zipCode: "90210",
-    	jobType: "Driver",
-    	interests: "Golf"
+		    facebookId: "111",
+   		  firstName: "James",
+    	  lastName: "Smith",
+    	  zipCode: "90210",
+    	  jobType: "Driver",
+    	  interests: "Golf"})
+                            })
 
-	})
+.then(function(){
 
-})
+  return models.Organization.create({
+      OrganizationName: "PETA",
+      pocName: "POC NAME",
+      pocPosition: "POC POSITION",
+      phoneNumber: "123-456-7890",
+      eMail: "PETA@gmail.com",
+      webSite: "www.peta.com",
+      zipCode: "08840"
+                            })
+              })
 
+/* THIS SHOULD ADD DATA, BUT IS NOT WORKING RIGHT NOW. THERE IS SOME PROBLEM WITH THE OrganizationId.
 
+.then(function(){
 
-
+  return models.Jobs.create({
+      title: "Intern",
+      desc: "Description of Job: This is a description of the volunteer position",
+      time: "9-5",
+      jobZipCode: "08840",
+      hours: "8",
+      OrganizationId: "5"
+                            })
+              })
+*/
 
 
 // we set the port of the app
