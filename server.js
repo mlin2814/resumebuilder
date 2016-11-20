@@ -37,18 +37,46 @@ app.use('/users', users_controller);
 //app.use('/organization', organization_controllers);
 
 // console.log("here2")
+
 // we bring in the models we exported with index.js
 var models = require("./models");
-// we set the port of the app
-app.set('port', process.env.PORT || 3000);
-
 
 // we sync the models with our db 
 // (thus creating the apropos tables)
-models.sequelize.sync().then(function () {
+
+// MIKE COMMENTED THIS OUT
+// models.sequelize.sync().then(function () {
+
+
+// SOLUTION: Sync our models
+models.sequelize.sync({force:true}) 
+// {force:true} drops the table everytime the server starts.
+
+// Solution: Create our Users in a .then callback
+// ================================================
+.then(function(){
+
+	return models.User.create({
+		facebookId: "111",
+   		firstName: "James",
+    	lastName: "Smith",
+    	zipCode: "90210",
+    	jobType: "Driver",
+    	interests: "Golf"
+
+	})
+
+})
+
+
+
+
+
+
+// we set the port of the app
+app.set('port', process.env.PORT || 3000);
 	// set our app to listen to the port we set above
   var server = app.listen(app.get('port'), function() {
   	// then save a log of the listening to our debugger.
     console.log('Express Server Listening on port ' + server.address().port);
   });
-});
