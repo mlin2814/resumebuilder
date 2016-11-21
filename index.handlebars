@@ -4,7 +4,7 @@
       <div class=".img-responsive">
           <img src="assets/img/burger-1674881_960_720.png" alt="Burger" style="width:250px; height: 250px;" align="center">
       </div>
-          <h1>Eat Da Burger!</h1>
+          <h1>Get the Position!</h1>
     </div>
   </div> --}}
 
@@ -52,11 +52,20 @@
     <form class="create-update-form" action="/resume/create" method="POST">
 
       <div class="form-group">
-        <label for="re">Burger Name:</label>
-        <input type="text" id="bu" name="burger_name">
+        <label for="re">Organization Name:</label>
+        <input type="text" id="re" name="position_name">
+        <label for="re">Address:</label>
+        <input type="text" id="re" name="position_address">
+        <label for="re">Phone Number:</label>
+        <input type="number" id="re" name="position_phone">
+        <label for="re">Website:</label>
+        <input type="text" id="re" name="position_web">
+        <input type="radio" name="v" value="Volunteer" checked> Volunteer<br>
+        <input type="radio" name="c" value="Community"> Community Service<br>
+        <input type="radio" name="i" value="Internship"> Internship
       </div>
       <div class="form-group">
-        <input type="hidden" name="devoured" value="1" checked>
+        <input type="hidden" name="Selected" value="true" checked>
         
       </div>
       <button type="submit">Add da Burger!</button>
