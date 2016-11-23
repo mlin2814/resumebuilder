@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	{{!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  	<link href="https://fonts.googleapis.com/css?family=Mogra" rel="stylesheet"> --}}
+  	
+  	<!-- Added link to the jQuery Library -->
+  	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+	<!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    {{!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> --}}
+
+		<title>Resume Padder</title>
+	</head>
+	<body>
+		{{{ body }}}
+	</body>
+</HTML>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+
+	console.log("document ready");
+
+//Open Model 
+$(".contactLink").on('click',function(){
+	console.log("here")
+        $('#contactModal').modal();      
+})
+
+});//on document ready
+
+</script>

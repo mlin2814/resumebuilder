@@ -1,9 +1,8 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
-    facebookId:{
-      type: DataTypes.INTEGER,
-      primaryKey: true
+    email:{
+      type: DataTypes.STRING,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -17,7 +16,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     jobType: DataTypes.STRING,
-    interests: DataTypes.STRING
+    interests: DataTypes.STRING,
+    password_hash: {
+      type: DataTypes.STRING,
+      allowNull:false
+    }
   }, {
     classMethods: {
       associate: function(models) {

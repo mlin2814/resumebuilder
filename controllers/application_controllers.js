@@ -5,7 +5,8 @@ var router  = express.Router();
 
 router.get('/', function(req, res) {
 
-  res.redirect('/jobs');
+//console.log(req);
+  res.render('index');
 });
 
 module.exports = router;
