@@ -22,6 +22,9 @@ var organization_controller = require('./controllers/organization_controller');
 // instantiate our app
 var app = express();
 
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(process.cwd() + '/public'));
+
 // override POST to have DELETE and PUT
 app.use(methodOverride('_method'))
 
@@ -76,7 +79,6 @@ app.use(function(err, req, res, next) {
 var models = require("./models");
 // we set the port of the app
 app.set('port', process.env.PORT || 3000);
-
 
 // we sync the models with our db 
 // (thus creating the apropos tables)

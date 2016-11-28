@@ -2,15 +2,16 @@ var bcrypt = require('bcryptjs');
 var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
+var path = require('path');
 
 //this is the users_controller.js file
 router.get('/new', function(req,res) {
-	console.log("NNNNNEEEEEWWWWW")
-	res.render('allmodals/userCreate');
+	//console.log("NNNNNEEEEEWWWWW")
+	res.sendFile(path.join(__dirname + '/../public/register.html'));
 });
 
 router.get('/signIn', function(req,res) {
-	console.log("CCCCOOOOMMMMEEE BBBBAAAACCKK");
+	//console.log("CCCCOOOOMMMMEEE BBBBAAAACCKK");
 	res.render('allmodals/userSignIn');
 });
 
@@ -81,7 +82,6 @@ router.post('/create', function(req,res) {
 				firstName: req.body.firstName,
 				lastName : req.body.lastName,
 				zipCode : req.body.zipCode,
-				jobType : req.body.jobType,
 				interest : req.body.interest,
 				password_hash: hash
 			})
