@@ -1,0 +1,16 @@
+<div>
+  {{#each jobs}}
+     <div class="well">
+     <span>
+        <h3> Job Title: {{this.title}} </h3>
+        <h3> Description: {{this.desc}} </h3>
+        <h4> Hours: {{this.hours}} </h4>
+        <h4> Organization: {{this.Organization.OrganizationName}} </h4>
+        <h5> Point of Contact: {{this.Organization.pocPosition}} - {{this.Organization.pocName}} </h5>
+        <h5> Phone Number: {{this.Organization.phoneNumber}}</h5>
+        <h6> Email: {{this.Organization.eMail}} </h6>
+        <p> For more information visit: {{this.Organization.webSite}}</p>  
+     </span>
+     </div>
+  {{/each}}
+</div>

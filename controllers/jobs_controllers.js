@@ -11,7 +11,9 @@ router.get('/', function(req, res) {
 		where: {jobZipCode: zipCodeVar}
 	}).then(function(data){
 
-		res.json(data);
+		var hbsObject = {jobs: data};
+		console.log(JSON.stringify(data[1]));
+		res.render('index', hbsObject)
 	})
 });
 

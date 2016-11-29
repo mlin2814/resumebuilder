@@ -89,17 +89,16 @@ router.post('/create', function(req,res) {
 					// save the user's information to req.session
 					// as shown in these comments
 					.then(function(user){
+						console.log("user" + user)
 						// we save the logged in status to the session
 	          			req.session.logged_in = true;
-	          			// the username to the session
-						req.session.username = user.username;
-						// the user id to the session
-	          			req.session.user_id = user.id;
-	          			// and the user's email.
-	          			req.session.user_email = user.email;
-
+						req.session.firstName = user.firstName;
+						req.session.lastName = user.lastName;
+				        req.session.user_id = user.id;
+				        req.session.email = user.email;
+				        req.session.zipCode = user.zipCode;
 	          			// redirect to home on login
-						res.send(user.username)
+						res.redirect('/jobs')
 					})
 				})
 			})
