@@ -26,7 +26,7 @@ router.get('/signOut', function(req,res) {
 // login
 router.post('/login', function(req, res) {
 	console.log("llllooogggiiinnn"+ req.body)
-  models.User.findOne({
+  models.Users.findOne({
     where: {email: req.body.email}
   }).then(function(user) {
 
