@@ -34,7 +34,7 @@ function katniss(){
 
 function katnissloop(){
 	katniss();
-	setTimeout(katnissloop,10000);
+	setTimeout(katnissloop,120000);
 };
 
 

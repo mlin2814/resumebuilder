@@ -2,8 +2,16 @@ var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
 
+//**********************************
+//nodeMailer
+//******************************
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport('smtps://senthilbackup42%40gmail.com:kitehigh@smtp.gmail.com');
+
+
 router.get('/', function(req, res) {
-	console.log("jjjjooooobbbbb    "+ req.session.email)
+	console.log("jjjjooooobbbbb    "+ JSON.stringify(req.session));
 	var zipCodeVar=req.session.zipCode;
 
 	models.Jobs.findAll({
@@ -11,11 +19,46 @@ router.get('/', function(req, res) {
 		where: {jobZipCode: zipCodeVar}
 	}).then(function(data){
 
-		var hbsObject = {jobs: data};
+		var hbsObject = {
+			userFirstName: req.session.firstName,
+			userLastName: req.session.lastName,
+			userzipCode:req.session.zipCode,
+			userEmail:req.session.email,
+			jobs: data};
 		console.log(JSON.stringify(data[1]));
 		res.render('index', hbsObject)
 	})
 });
+
+router.post('/email/:id', function(req, res) { 
+	console.log(req.params.id);
+	console.log(JSON.stringify(req.body));
+	console.log(JSON.stringify(req.sessions));
+
+	models.Jobs.findOne({
+		include: [ models.Organization ],
+		where: {id:req.params.id}
+	}).then(function(data){
+		// setup e-mail data with unicode symbols 
+		var text=JSON.stringify(data) 
+		var mailOptions = {
+		    from: '"Resume Padder" <resume@padder.com>', // sender address 
+		    to: req.body.email, // list of receivers 
+		    subject: data.title, // Subject line 
+		    text: text, // plaintext body 
+		    html: '<b>'+ text+'</b>' // html body 
+		};
+
+		transporter.sendMail(mailOptions, function(error, info){
+	    if(error){
+	        throw error;
+	    }
+    		res.send('Message sent: ' + info.response);
+		});
+	})
+
+});
+
 
 module.exports = router;
 

@@ -1,5 +1,5 @@
 {
-  "name": "resumepodder",
+  "name": "resumepadder",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Senthilselva/resumepodder.git"
+    "url": "git+https://github.com/Senthilselva/resumepadder.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Senthilselva/resumepodder/issues"
+    "url": "https://github.com/Senthilselva/resumepadder/issues"
   },
-  "homepage": "https://github.com/Senthilselva/resumepodder#readme",
+  "homepage": "https://github.com/Senthilselva/resumepadder#readme",
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
@@ -29,6 +29,7 @@
     "method-override": "^2.3.6",
     "morgan": "^1.7.0",
     "mysql": "^2.12.0",
+    "nodemailer": "^2.6.4",
     "path": "^0.12.7",
     "sequelize": "^3.26.0",
     "serve-favicon": "^2.3.2"
