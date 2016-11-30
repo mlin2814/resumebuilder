@@ -53,7 +53,7 @@ router.post('/email/:id', function(req, res) {
 	    if(error){
 	        throw error;
 	    }
-    		res.send('Message sent: ' + info.response);
+    		//res.send('Message sent: ' + info.response);
 		});
 	})
 
