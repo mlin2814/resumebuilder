@@ -40,7 +40,11 @@ router.post('/email/:id', function(req, res) {
 		where: {id:req.params.id}
 	}).then(function(data){
 		// setup e-mail data with unicode symbols 
-		var text=JSON.stringify(data) 
+		//var text=JSON.stringify(data)
+		var text = "Title :"+data.title + "<br>" + "Description:" + data.desc;
+			text= text + "<br> Point of Contact : " + data.Organization.pocName;
+			text = text +"<br> Phone : " +data.Organization.phoneNumber+"<br> E-mail: "+ data.Organization.eMail;
+			text = text +"<br> Website : "+ data.Organization.webSite;
 		var mailOptions = {
 		    from: '"Resume Padder" <resume@padder.com>', // sender address 
 		    to: req.body.email, // list of receivers 
@@ -53,7 +57,7 @@ router.post('/email/:id', function(req, res) {
 	    if(error){
 	        throw error;
 	    }
-    		//res.send('Message sent: ' + info.response);
+    		res.redirect('/jobs');
 		});
 	})
 
