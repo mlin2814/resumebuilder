@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     pocPosition: DataTypes.STRING,
     phoneNumber:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull:false
     }, 
     eMail: DataTypes.STRING,
