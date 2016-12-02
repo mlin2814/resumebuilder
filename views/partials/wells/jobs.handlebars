@@ -17,10 +17,18 @@
         <div class="col-md-8">
         </div>
         <div class="col-md-4">
-            <form action="jobs/email/{{this.id}}" method="POST">
+            {{!-- <form action="jobs/email/{{this.id}}" method="POST">
                 <input type="hidden" name="email" value={{../userEmail}}>
                 <button type="submit" id="btnSendMail" class="btn btn-default">Send it to my email</button>
+            </form> --}}
+            
+            {{!-- ****trying to use Jquery**** --}}
+
+            <form id={{this.id}}>
+                <input type="hidden" name="email" class={{this.id}} value={{../userEmail}}>
+                <button type="button" class="btnSendMail btn btn-default">Send it to my email</button>
             </form>
+
         </div>
         {{!-- form end --}}
         </div> 
