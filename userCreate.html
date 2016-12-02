@@ -56,6 +56,20 @@
     </div>
   </form><!--JQUERY/ JS LINK-->
 <script src="https://code.jquery.com/jquery.js"></script>
+<script> 
+  function errorTest() {
+     var email, x;
+     email = document.getElementById("email");
+     email.innerHTML = "";
+     x = document.getElementById("email").value;
+     try { 
+         if(email == "")  throw "missing";
+     }
+     catch(err) {
+         email.innerHTML = "This field is " + err + ". Please enter your interests";
+     }
+  }
+</script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 
