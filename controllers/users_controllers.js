@@ -10,11 +10,6 @@ router.get('/new', function(req,res) {
 	res.sendFile(path.join(__dirname + '/../public/register.html'));
 });
 
-router.get('/signIn', function(req,res) {
-	//console.log("CCCCOOOOMMMMEEE BBBBAAAACCKK");
-	res.render('allmodals/userSignIn');
-});
-
 router.get('/signOut', function(req,res) {
   req.session.destroy(function(err) {
   	res.send("logged out")
@@ -25,7 +20,7 @@ router.get('/signOut', function(req,res) {
 
 // login
 router.post('/login', function(req, res) {
-	console.log("llllooogggiiinnn"+ JSON.stringify(req.body));
+	//console.log("llllooogggiiinnn"+ JSON.stringify(req.body));
   models.User.findOne({
     where: {email: req.body.email}
   }).then(function(user) {
@@ -37,22 +32,19 @@ router.post('/login', function(req, res) {
     bcrypt.compare(req.body.password, user.password_hash, function(err, result) {
       // if the result is true (and thus pass and hash match)
       if (result == true){
-      	console.log("qqqqqqqqqqqqqqqqqqqqq")
         req.session.logged_in = true;
 		req.session.firstName = user.firstName;
 		req.session.lastName = user.lastName;
         req.session.user_id = user.id;
         req.session.email = user.email;
         req.session.zipCode = user.zipCode;
-       //res.send(req.session.firstName)
        res.redirect('/jobs')
        
       }
       // if the result is anything but true (password invalid)
       else{
       	// redirect user to sign in
-				//res.redirect('/users/sign-in')
-				res.send("HAI HAI")
+				res.redirect('/')
 			}
     })
   })
