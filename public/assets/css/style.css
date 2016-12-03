@@ -55,12 +55,12 @@ body {
 	margin-bottom:10px;
 }
 
-#firstname, #lastname, #email, #password, #zip, #interest {
+#firstname, #lastname, #email, #password, #zip, #interest, #pocname, #orgname, #position, #website, #phone {
 	width: 300px;
 }
 
 
-#photo {
+#photo1 {
 	height:600px;
 	background-image:url("volunteer17.jpg");
 	background-size: 100%;
@@ -70,4 +70,16 @@ body {
 
 #row6 {
 	height:50px;
+}
+
+#photo2 {
+	height:600px;
+	background-image:url("volunteer18.jpg");
+	background-size: 100%;
+	background-repeat:no-repeat;
+	margin-top:20px;
+}
+
+#password1, #loginbutton {
+	margin-left:10px;
 }

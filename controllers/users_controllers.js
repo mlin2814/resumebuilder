@@ -52,7 +52,7 @@ router.post('/login', function(req, res) {
 
 // register a user
 router.post('/create', function(req,res) {
-	console.log("Create userSS")
+	//console.log("Create userSS")
 	models.User.findAll({
     where: {email: req.body.email}
   }).then(function(users) {
@@ -68,7 +68,7 @@ router.post('/create', function(req,res) {
 					
 			// Using the User model, create a new user,
 			// storing the email they sent and the hash you just made
-			console.log(req.body);
+			//console.log(req.body);
 			models.User.create({
 				email: req.body.email,
 				firstName: req.body.firstName,
@@ -81,7 +81,7 @@ router.post('/create', function(req,res) {
 					// save the user's information to req.session
 					// as shown in these comments
 					.then(function(user){
-						console.log("user" + user)
+						//console.log("user" + user)
 						// we save the logged in status to the session
 	          			req.session.logged_in = true;
 						req.session.firstName = user.firstName;

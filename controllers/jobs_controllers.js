@@ -11,7 +11,7 @@ var transporter = nodemailer.createTransport('smtps://senthilbackup42%40gmail.co
 
 
 router.get('/', function(req, res) {
-	console.log("jjjjooooobbbbb    "+ JSON.stringify(req.session));
+	//console.log("jjjjooooobbbbb    "+ JSON.stringify(req.session));
 	var zipCodeVar=req.session.zipCode;
 
 	models.Jobs.findAll({
@@ -25,15 +25,15 @@ router.get('/', function(req, res) {
 			userzipCode:req.session.zipCode,
 			userEmail:req.session.email,
 			jobs: data};
-		console.log(JSON.stringify(data[1]));
+		//console.log(JSON.stringify(data[1]));
 		res.render('index', hbsObject)
 	})
 });
 
 router.post('/email/:id', function(req, res) { 
-	console.log(req.params.id);
-	console.log(JSON.stringify(req.body));
-	console.log(JSON.stringify(req.sessions));
+	//console.log(req.params.id);
+	//console.log(JSON.stringify(req.body));
+	//console.log(JSON.stringify(req.sessions));
 
 	models.Jobs.findOne({
 		include: [ models.Organization ],
