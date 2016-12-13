@@ -9,16 +9,10 @@ body {
 
 #header {
 	height:200px;
-	background-image:url("resumepadderclear.png");
-	background-size: 100%;
-	background-repeat:no-repeat;
-}
-
-#welcome {
-	height:90px;
-	background-image:url("welcometoclear.png");
-	background-size: 100%;
-	background-repeat:no-repeat;
+	font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;;
+	float: center;
+	font-size: 100px;
+	text-align: center;
 }
 
 #row1 {
